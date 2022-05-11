@@ -98,13 +98,12 @@ void tree_building(int a, int b, int* matrix, int* v_r,
 void mat_reg (int a, int b, int *matrix, int *n_exclus, int *v_r
               int *v_c)
 {
-  int min_r, min_c, maxn m_reg;
+  int min, max;
   int k = 0;
   int l = 0;
-  int **z_tab = malloc(sizeof(int)  * a);
+  int *z_tab = malloc(sizeof(int)  * a);
   
-  min_r = INT_MAX;
-  min_c = INT_MAX;
+  min = INT_MAX;
   if( b == 0)
   {
     for(int i = 0; i < a ; i++)
@@ -116,26 +115,20 @@ void mat_reg (int a, int b, int *matrix, int *n_exclus, int *v_r
       
         if(matrix[i * a + j] == 0)
         {
-          z_tab[l][k] = j;
+          z_tab[k] = j;
           k++;
           if (k > 1)
-            min_r = 0;
+            min = 0;
         }
         else if (min > matrix[i * a + j])
         {
-          min_r = matrix[ i * a + j];
+          min = matrix[ i * a + j];
         }
       }
 
       for( int j = 0; j < k; j ++)
       {
-        for (int h = 0; h < a; h++)
-        {
-          if( h == j)
-            continue;
-
-          if(min_c > matrix[h ])
-        }
+        matrix[i * a + z_tab[j] ] += min;
       }
     }
 

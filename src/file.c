@@ -2,10 +2,11 @@
 #include <stdlib.h>
 
 
-void mat_gen (FILE *f, const char *filename, int *matrix )
+void mat_gen ( const char *filename, int *matrix, int a )
 {
-  int value;
   int i = 0;
+  FILE *f;
+
   f = fopen(filename, "r");
   if(f==NULL)
   {
@@ -13,9 +14,9 @@ void mat_gen (FILE *f, const char *filename, int *matrix )
     exit(0);
   }
 
-  while((value = fgetc(f)) != EOF)
+  while( i < a * a)
   {
-    matrix[i] = value;
+    fscanf(f, "%d", &matrix[i]);
     i++;
   }
 
