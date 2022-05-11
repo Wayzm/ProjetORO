@@ -2,29 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "file.h"
+#include "reg.h"
+
 int main (int argc, char **argv)
 {
   int check = 2;
   char str[1024];
   FILE* f;
-  f = fopen("data.csv", "r");
-  int a = atoi(argv[1]);
-  int * matrix = malloc(sizeof(int) * a * a);
-  
+
   int l = 0;
-  while(check != EOF)
-    {
-       switch(check)
-       {
-          case ',':
-            break;
-          default:
-            matrix[l] = check;
-            l++;
-            break;
-       }
-      check = fgetc(f);
-    }
+  int i = 0; 
+  int a = atoi(argv[1]);
+  int *matrix = malloc(sizeof(int) * a * a);
+  const char* filename = "../data.txt";
+
+  mat_gen(f, filename, matrix);
 
   free(matrix);
   return 0;
