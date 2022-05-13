@@ -29,10 +29,10 @@ reg.o: $(INCS)/reg.c
 
 ###
 bin/main: $(RUN) $(FIL) $(REG)
-	$(CC) -o main $(FLAGS) $(RUN) $(FIL) $(REG)
+	$(CC) -o bin/main $(FLAGS) $(RUN) $(FIL) $(REG)
 
 solve:
-	main
+	bin/main
 
 clean:
 	rm bin/* *.o
