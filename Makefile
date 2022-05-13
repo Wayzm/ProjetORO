@@ -4,7 +4,7 @@ IC=icc
 CL=clang
 
 ### Flah options 
-FLAGS= -Wall -Wextra -flto
+FLAGS= -Wall -Wextra -flto -g -mavx2
 
 ### include
 INCH= -I ./include 
@@ -32,7 +32,7 @@ bin/main: $(RUN) $(FIL) $(REG)
 	$(CC) -o main $(FLAGS) $(RUN) $(FIL) $(REG)
 
 solve:
-	bin/main
+	main
 
 clean:
 	rm bin/* *.o

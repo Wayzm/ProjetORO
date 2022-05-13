@@ -4,6 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void mat_gen(FILE *, const char *filename, int *matrix);
+void mat_gen( const char *filename, int *matrix, int a);
 
 #endif // !FILE_H
