@@ -198,3 +198,12 @@ void tree_update (int *node, int *n_exclus, int n_size)
   int u = n_size;
   node[u] = node[u - 1] + n_exclus[u -1];
 }
+
+void mat_cut (int a, int *matrix, int e_r, int e_c)
+{
+  for (int i = 0; i < a; i++)
+  {
+    matrix[ i * a + e_c] = -1;
+    matrix[ e_r * a + i] = -1;
+  }
+}

@@ -15,5 +15,6 @@ void tree_update(int *node, int *n_exclus, int n_size);
 
 void mat_reg(int a, int b, int *matrix, int *n_exclus, int *n_size,
             int *e_r, int *e_c, int max);
+void mat_cut(int a, int *matrix, int e_r, int e_c);
 #endif // !REG_H
 

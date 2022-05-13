@@ -33,13 +33,14 @@ int main (int argc, char **argv)
   tree_building(a, b, matrix, &v_r, &v_c, &n_size, node, MAX);
   mat_reg(a, b, matrix, n_exclus, &n_size, &e_r, &e_c, MAX);
   p_mat(matrix, a);
-  printf("Line : %d, Col : %d . \n", e_r, e_c);
   tree_update(node, n_exclus, n_size);
-  printf("Tree cell 0 : %d, Tree cell 1 : %d . \n", node[0], node[1]);
-
+  mat_cut(a, matrix, e_r, e_c);
+  p_mat(matrix, a);
+  
   free(matrix);
   free(n_exclus);
   free(node);
   return 0;
+}
   
 
