@@ -1,14 +1,19 @@
 /*** Chutzpa William YEUMO BARKWENDE ***/ 
+/*** file that has the functions needed for the back experiement ***/ 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "sad.h"
 
+/*** This function gives us the path with how our branch is implemented ***/
+/*** Each entry on the last layer of either 2D array cnly has one path upwards ***/
 void bin(int a, int v)
 {
   int i;
   int l; 
   int tab[32];
   printf("Chemain possible dans l'arbe est : \n");
+
   for( i = 0; v > 0; i++)
   {
     tab[i] = v%2;
@@ -28,6 +33,9 @@ void bin(int a, int v)
   }
   printf("\n");
 }
+
+// In this function we create our tree by branching the possibilities with our separation criteria
+// we take the objet or not 
 void branch (int a, int *matrix, int **poid, int **value)
 {
   int x = 2;
@@ -52,6 +60,8 @@ void branch (int a, int *matrix, int **poid, int **value)
   }
 }
 
+// First iteration of the branching
+// Criteria : Take it or not
 void init (int a, int *matrix, int **poid, int **value)
 {
   poid[0][0] = matrix[0];
@@ -60,6 +70,10 @@ void init (int a, int *matrix, int **poid, int **value)
   value[0][1] = 0;
 }
 
+// Here we first look at which position on our poid aray fulfills the weight limit
+// then we store this position in a temporary vector
+// Then we look at which of these positions has the highest value
+// Then we determine the path following the way upwards through a binary system since our criteria is binary
 void eval (int a, int m, int **poid, int **value)
 {
   int v = 0;

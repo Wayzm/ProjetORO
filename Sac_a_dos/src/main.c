@@ -1,4 +1,5 @@
 /***   Chutzpa William YEUMO BARKWENDE             ***/
+/***  main file that calls function for the back pack experiement ***/
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,3 +1,6 @@
+// Chutzpa William YEUMO BARKWENDE 
+// File linked to sad.c
+
 #ifndef SAD_H
 #define SAD_H 
 
