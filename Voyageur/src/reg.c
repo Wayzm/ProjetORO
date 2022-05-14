@@ -13,7 +13,7 @@ void p_mat (int *matrix, int a)
   }
 }
 
-void row_op(int n, int *matrix, int a, int *v, int m)
+void row_op(int n, int *matrix, int a, int *v_r, int m)
 {
   int min;
   min = m;
@@ -30,6 +30,8 @@ void row_op(int n, int *matrix, int a, int *v, int m)
         if (min > matrix[i*a +j])
           min = matrix[i*a +j];
       }
+      if (min == m)
+        min = 0;
       
       for(int j = 0; j < a; j++)
       {
@@ -38,7 +40,7 @@ void row_op(int n, int *matrix, int a, int *v, int m)
         else
           matrix[i*a +j] -= min;
       }
-      *v += min;
+      *v_r += min;
       min = m;
     }
   }
@@ -49,7 +51,7 @@ void row_op(int n, int *matrix, int a, int *v, int m)
   }
 }
 
-void col_op(int n, int *matrix, int a, int *v, int m)
+void col_op(int n, int *matrix, int a, int *v_c, int m)
 {
   int min;
   min = m;
@@ -66,6 +68,9 @@ void col_op(int n, int *matrix, int a, int *v, int m)
         if (min > matrix[i + j * a])
           min = matrix[i +j*a];
       }
+
+      if (min == m)
+        min = 0;
       
       for(int j = 0; j < a; j++)
       {
@@ -74,7 +79,7 @@ void col_op(int n, int *matrix, int a, int *v, int m)
         else
           matrix[i +j*a] -= min;
       }
-      *v += min;
+      *v_c += min;
       min = m;
     }
   }
@@ -90,15 +95,17 @@ void tree_building(int a, int b, int* matrix, int* v_r,
 {
   row_op(b, matrix, a, &v_r, m);
   col_op(b, matrix, a,&v_c, m);
-
-  node[*n_size] = *v_r + *v_c;
+  
+  int i = *n_size;
+  int j = *v_r + *v_c;
+  node[i] = j;
   *v_r = 0;
   *v_c = 0;
   *n_size += 1;;
 }
 
 void mat_reg (int a, int b, int *matrix, int *n_exclus, int *n_size,
-              int *e_r, int *e_c, int m)
+              int *e_r, int *e_c, int m, int l)
 {
   int min_r, min_c, max;
   int k = 0;
@@ -183,7 +190,7 @@ void mat_reg (int a, int b, int *matrix, int *n_exclus, int *n_size,
       }
     }
     u = *n_size;
-    n_exclus[u - 1] = max;
+    n_exclus[l] = max;
 
 
   }
@@ -193,10 +200,11 @@ void mat_reg (int a, int b, int *matrix, int *n_exclus, int *n_size,
   
 }
 
-void tree_update (int *node, int *n_exclus, int n_size)
+void tree_update (int *node, int *n_exclus, int *n_size, int l)
 {
-  int u = n_size;
-  node[u] = node[u - 1] + n_exclus[u -1];
+  int u = *n_size;
+  node[u] = node[u - 1 ] + n_exclus[l];
+  *n_size += 1;
 }
 
 void mat_cut (int a, int *matrix, int e_r, int e_c)
@@ -206,4 +214,6 @@ void mat_cut (int a, int *matrix, int e_r, int e_c)
     matrix[ i * a + e_c] = -1;
     matrix[ e_r * a + i] = -1;
   }
+
+  matrix[e_r + e_c * a] = -1;
 }
