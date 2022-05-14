@@ -5,7 +5,7 @@ IC=icc
 CL=clang
 
 ### Flah options 
-FLAGS= -Wall -Wextra -flto -g -mavx2 -O3 
+FLAGS= -Wall -Wextra -flto -g -march=native -mtune=native -mavx2 -O3 
 
 ### include
 INCH= -I ./include 
