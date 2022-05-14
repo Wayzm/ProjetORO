@@ -63,30 +63,34 @@ void init (int a, int *matrix, int **poid, int **value)
 void eval (int a, int m, int **poid, int **value)
 {
   int v = 0;
-  int z;
+  int vv, z, p;
   int y = 0;
   int x = 2;
+
   for(int i = 0; i < a; i++)
     x*=2;
 
-  int *coord = malloc(sizeof(int) * x);
-
+  int *cd = malloc(sizeof(int) * x);
 
   for(int i = 0; i < x; i++)
   {
-    if(poid[a-1][i] <= m)
+    p = poid[a - 1][i];
+    if(p <= m)
     {
-      coord[y] = i;
-      y++;
+      cd[y] = i;
+      y += 1;
     }
   }
 
   for(int i = 0; i < y; i++)
   {
-    z = coord[i];
-    if (v < value[a-1][z])
+    z = cd[i];
+    vv = value[a-1][z];
+    if (vv > 10000 || vv < -10000)
+      continue;
+    if (v < vv)
     {
-      v = value[a-1][z];
+      v = vv;
     }
   }
 
@@ -99,6 +103,6 @@ void eval (int a, int m, int **poid, int **value)
     }
   }
 
-  free(coord);
+  free(cd);
   
 }

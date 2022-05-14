@@ -17,6 +17,7 @@ int main ( int argc, char **argv )
   int *poid[a];
   int *value[a];
   int b = 2;
+  int c;
 
   if(argc != 4)
   {
@@ -27,8 +28,9 @@ int main ( int argc, char **argv )
   for(int i = 0; i < a ; i++)
   { 
     b *= 2;
-    poid[i] = malloc(sizeof(int) * b / 2);
-    value[i] = malloc(sizeof(int) * b / 2);
+    c = b/2;
+    poid[i] = malloc(c * sizeof(int));
+    value[i] = malloc(c * sizeof(int));
   }
 
   mat_gen(filename, matrix, a);
