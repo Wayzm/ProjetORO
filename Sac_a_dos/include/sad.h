@@ -11,7 +11,14 @@ void init (int a, int *atrix, int **poid, int **value);
 void branch (int a, int *matrix, int **poid, int **value );
 
 // On fait la méthode d'évaluation
-void eval (int a, int **poid, int **value);
+// m étant la condition sur le poid
+void eval (int a, int m, int **poid, int **value);
+
+//On récupere le chemin par le binaire de la position dans la couche 
+void bin (int a, int v);
+
+
+
 
 
 #endif // !SAD_H

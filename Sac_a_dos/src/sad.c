@@ -1,10 +1,33 @@
 /*** Chutzpa William YEUMO BARKWENDE ***/ 
 #include <stdio.h>
 #include <stdlib.h>
-#include <omp.h>
 #include "sad.h"
 
-
+void bin(int a, int v)
+{
+  int i;
+  int l; 
+  int tab[32];
+  printf(" Chemain possible dans l'arbe est : \n");
+  for( i = 0; v > 0; i++)
+  {
+    tab[i] = v%2;
+    v /= 2;
+  }
+  if( i < a)
+  {
+    l = a - i;
+    for (int j = 0; j < l; j ++)
+      printf("0 ");
+  }
+  
+  
+  for( i = i -1; i >= 0; i--)
+  {
+    printf("%d ",tab[i]);   
+  }
+  printf("\n");
+}
 void branch (int a, int *matrix, int **poid, int **value)
 {
   int x = 2;
@@ -35,11 +58,47 @@ void init (int a, int *matrix, int **poid, int **value)
   poid[0][1] = 0;
   value[0][0] = matrix[a];
   value[0][1] = 0;
-
-  printf(" Couche 0 :\n %d %d \n", poid[0][0], poid[0][1]);
 }
 
-void eval (int a, int **poid, int **value)
+void eval (int a, int m, int **poid, int **value)
 {
+  int v = 0;
+  int z;
+  int y = 0;
+  int x = 2;
+  for(int i = 0; i < a; i++)
+    x*=2;
+
+  int *coord = malloc(sizeof(int) * x);
+
+
+  for(int i = 0; i < x; i++)
+  {
+    if(poid[a-1][i] <= m)
+    {
+      coord[y] = i;
+      y++;
+    }
+  }
+
+  for(int i = 0; i < y; i++)
+  {
+    z = coord[i];
+    if (v < value[a-1][z])
+    {
+      v = value[a-1][z];
+    }
+  }
+
+  for(int i = 0; i < x; i++)
+  {
+    if(v == value[a-1][i])
+    {
+      printf("La solution optimaale a pour valeur : %d \n",v);
+      bin(a, i);
+    }
+  }
+
+  free(coord);
   
 }

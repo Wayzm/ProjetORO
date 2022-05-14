@@ -11,11 +11,18 @@
 int main ( int argc, char **argv )
 {
   int a = atoi(argv[2]);
+  int m = atoi(argv[3]);
   const char *filename = argv[1];
   int *matrix = malloc(sizeof(int) * 2 * a);
   int *poid[a];
   int *value[a];
   int b = 2;
+
+  if(argc != 4)
+  {
+    printf("Please input the data file in txt format, then the number of elements, and the weight limit. \n");
+    exit(0);
+  }
 
   for(int i = 0; i < a ; i++)
   { 
@@ -27,6 +34,7 @@ int main ( int argc, char **argv )
   mat_gen(filename, matrix, a);
   init(a, matrix, poid, value);
   branch(a, matrix, poid, value);
+  eval(a, m, poid, value);
 
 
 
