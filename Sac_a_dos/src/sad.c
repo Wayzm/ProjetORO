@@ -92,11 +92,12 @@ void eval (int a, int m, int **poid, int **value)
     }
   }
 
+  printf("La solution optimaale a pour valeur : %d \n",v);
+
   for(int i = 0; i < x; i++)
   {
     if(v == value[a-1][i])
     {
-      printf("La solution optimaale a pour valeur : %d \n",v);
       bin(a, i);
     }
   }
