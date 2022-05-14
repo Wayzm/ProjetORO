@@ -18,7 +18,7 @@ void branch (int a, int *matrix, int **poid, int **value );
 void eval (int a, int m, int **poid, int **value);
 
 //On récupere le chemin par le binaire de la position dans la couche 
-void bin (int a, int v);
+void bin (int a, int v, int u);
 
 
 

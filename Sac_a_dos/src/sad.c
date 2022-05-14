@@ -7,12 +7,13 @@
 
 /*** This function gives us the path with how our branch is implemented ***/
 /*** Each entry on the last layer of either 2D array cnly has one path upwards ***/
-void bin(int a, int v)
+void bin(int a, int v, int u)
 {
   int i;
   int l; 
   int tab[32];
-  printf("Chemain possible dans l'arbe est : \n");
+  if(u == 0)
+    printf("Chemain possible dans l'arbe est : \n");
 
   for( i = 0; v > 0; i++)
   {
@@ -107,14 +108,24 @@ void eval (int a, int m, int **poid, int **value)
   }
 
   printf("La solution optimaale a pour valeur : %d \n",v);
-
+  p = m;
   for(int i = 0; i < x; i++)
   {
     if(v == value[a-1][i])
     {
-      bin(a, i);
+      bin(a, i, 0);
+      printf("Poids du sac : %d \n", poid[a-1][i]);
+      if (p > poid[a-1][i])
+      {
+        vv = i;
+        p = poid[a-1][i];
+      }
     }
+
   }
+
+  printf(" \nDonc le chemain optimal est : \n");
+  bin(a, vv, 1);
 
   free(cd);
   
