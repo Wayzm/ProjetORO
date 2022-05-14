@@ -8,7 +8,7 @@ void bin(int a, int v)
   int i;
   int l; 
   int tab[32];
-  printf(" Chemain possible dans l'arbe est : \n");
+  printf("Chemain possible dans l'arbe est : \n");
   for( i = 0; v > 0; i++)
   {
     tab[i] = v%2;
@@ -67,7 +67,7 @@ void eval (int a, int m, int **poid, int **value)
   int y = 0;
   int x = 2;
 
-  for(int i = 0; i < a; i++)
+  for(int i = 1; i < a; i++)
     x*=2;
 
   int *cd = malloc(sizeof(int) * x);
@@ -86,8 +86,6 @@ void eval (int a, int m, int **poid, int **value)
   {
     z = cd[i];
     vv = value[a-1][z];
-    if (vv > 10000 || vv < -10000)
-      continue;
     if (v < vv)
     {
       v = vv;
