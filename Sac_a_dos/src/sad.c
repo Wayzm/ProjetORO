@@ -1,6 +1,7 @@
 /*** Chutzpa William YEUMO BARKWENDE ***/ 
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 #include "sad.h"
 
 
@@ -40,5 +41,5 @@ void init (int a, int *matrix, int **poid, int **value)
 
 void eval (int a, int **poid, int **value)
 {
-
+  
 }
