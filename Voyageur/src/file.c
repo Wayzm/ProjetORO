@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "file.h"
 
 void mat_gen ( const char *filename, int *matrix, int a )
 {
