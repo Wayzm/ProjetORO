@@ -43,6 +43,11 @@ int main (int argc, char **argv)
   mat_cut(a, matrix, e_r, e_c);
   p_mat(matrix, a);
   printf("%d size of node \n", n_size);
+  tree_building(a, b, matrix, &v_r, &v_c, &n_size, node, MAX);
+  mat_reg(a, b, matrix, n_exclus, &n_size, &e_r, &e_c, MAX, 1);
+  tree_update(node, n_exclus, &n_size, 1);
+  mat_cut(a, matrix, e_r, e_c);
+  p_mat(matrix, a);
 
   free(matrix);
   free(n_exclus);

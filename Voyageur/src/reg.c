@@ -28,7 +28,7 @@ void row_op(int n, int *matrix, int a, int *v_r, int m)
           continue;
 
         if (min > matrix[i*a +j])
-          min = matrix[i*a +j];
+          min = matrix[i * a + j];
       }
       if (min == m)
         min = 0;
@@ -38,7 +38,7 @@ void row_op(int n, int *matrix, int a, int *v_r, int m)
         if (matrix[ i * a + j] == -1)
           continue;
         else
-          matrix[i*a +j] -= min;
+          matrix[i * a + j] -= min;
       }
       *v_r += min;
       min = m;
@@ -66,7 +66,7 @@ void col_op(int n, int *matrix, int a, int *v_c, int m)
           continue;
 
         if (min > matrix[i + j * a])
-          min = matrix[i +j*a];
+          min = matrix[i + j * a];
       }
 
       if (min == m)
@@ -77,7 +77,7 @@ void col_op(int n, int *matrix, int a, int *v_c, int m)
         if (matrix[ i + j * a] == -1)
           continue;
         else
-          matrix[i +j*a] -= min;
+          matrix[i + j * a] -= min;
       }
       *v_c += min;
       min = m;
@@ -94,7 +94,7 @@ void tree_building(int a, int b, int* matrix, int* v_r,
                     int *v_c, int *n_size, int* node, int m)
 {
   row_op(b, matrix, a, &v_r, m);
-  col_op(b, matrix, a,&v_c, m);
+  col_op(b, matrix, a, &v_c, m);
   
   int i = *n_size;
   int j = *v_r + *v_c;
